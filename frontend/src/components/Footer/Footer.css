@@ -1,0 +1,33 @@
+:root {
+  --bg: rgb(18, 11, 36);
+  --bg-dark: rgb(10, 6, 20);
+  --txt: #fff;
+  --blue: rgb(123, 210, 213);
+  --txt-pink: rgb(173, 2, 167);
+  --gold: rgb(239, 203, 44);
+}
+.footer-box {
+  padding: 30px 5%;
+  background-color: var(--bg-dark);
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.footer-box nav {
+  display: flex;
+  gap: 100px;
+}
+.footer-box ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-box a {
+  text-decoration: none;
+  color: rgb(190, 190, 190)
+}
+.footer-box a:hover {
+  color: rgb(228, 228, 228);
+}

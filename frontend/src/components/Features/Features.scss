@@ -1,0 +1,116 @@
+:root {
+  --bg: rgb(18, 11, 36);
+  --bg-dark: rgb(10, 6, 20);
+  --txt: #fff;
+  --blue: rgb(123, 210, 213);
+  --dark-blue: #1e5688;
+  --txt-pink: rgb(173, 2, 167);
+  --gold: rgb(239, 203, 44);
+}
+.features-content {
+  display: flex;
+  width: 100%;
+}
+.features-cards-box {
+  display: flex;
+  width: 60%;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+.features-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  width: 48%;
+  height: 18rem;
+  padding: 3rem;
+  border-radius: 30px;
+  background: rgb(31,14,28);
+  background: linear-gradient(325deg, rgba(31,14,28,1) 0%, rgb(40, 22, 37) 100%);
+  box-shadow: 0px 0px 40px 5px rgba(0,0,0,0.3);
+  transform: translateY(0) rotate(0);
+  transition: transform 0.1s ease-in-out;
+}
+.features-card:hover {
+  transform: translateY(-15px) rotate(-1deg);
+}
+.features-card:hover span {
+  box-shadow: 0px 0px 40px 5px rgb(42, 23, 38);
+}
+.features-card span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: rgb(54, 24, 49);
+}
+.features-info {
+  padding-right: 100px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+}
+.features-info h2 {
+  font-size: 40px;
+  line-height: 100%;
+  margin-bottom: 20px;
+}
+.features-info p {
+  line-height: 200%;
+}
+@media screen and (max-width: 1160px) {
+  .features-info {
+    padding-right: 0;
+    width: 100%;
+  }
+  .features-cards-box {
+    width: 100%;
+  }
+  .features-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .features-cards-box {
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  .features-card {
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  .features-card span {
+    justify-content: center;
+    align-items: center;
+  }
+  .features-card p {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .features-cards-box {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .features-card {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .features-info {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}

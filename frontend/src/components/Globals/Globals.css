@@ -1,0 +1,95 @@
+:root {
+  --bg: rgb(18, 11, 36);
+  --bg-dark: rgb(10, 6, 20);
+  --txt: #fff;
+  --blue: rgb(123, 210, 213);
+  --dark-blue: #1e5688;
+  --txt-pink: rgb(173, 2, 167);
+  --gold: rgb(239, 203, 44);
+}
+.globals {
+  display: flex;
+}
+.globals-info {
+  width: 50%;
+  padding-left: 30px; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
+  gap: 30px;
+}
+.globals-info .title {
+  justify-content: flex-end;
+}
+.globals-info h2 {
+  font-size: 40px;
+  line-height: 100%;
+  margin-bottom: 20px;
+}
+#btc {
+  color: var(--gold)
+}
+.globals-box {
+  width: 50%;
+  padding: 70px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  font-size: 18px;
+  border-radius: 10px;
+  background-color: rgba(190, 190, 190, 0.1);
+  box-shadow: 0px 0px 40px 5px rgba(0,0,0,0.3);
+  transform: translateY(0);
+  transition: transform 0.1s ease-in-out;
+}
+.globals-box:hover {
+  background-color: rgba(190, 190, 190, 0.12);
+  transform: translateY(-5px);
+}
+.globals-box font {
+  color: var(--txt-pink)
+}
+.globals-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media screen and (max-width: 1300px) {
+  .globals .pie-chart {
+    width: 200px;
+    height: fit-content;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .globals-box {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 665px) {
+  .globals {
+    flex-direction: column-reverse;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+  .globals-box {
+    width: 80%;
+  }
+  .globals-info {
+    width: 100%;
+  }
+  .globals-info {
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 450px) {
+  .globals-box {
+    width: 100%;
+  }
+}

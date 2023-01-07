@@ -1,0 +1,113 @@
+:root {
+  --bg: rgb(18, 11, 36);
+  --bg-dark: rgb(10, 6, 20);
+  --txt: #fff;
+  --blue: rgb(123, 210, 213);
+  --dark-blue: #1e5688;
+  --txt-pink: rgb(173, 2, 167);
+  --gold: rgb(239, 203, 44);
+}
+.crypto-news-box {
+  padding: 0;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  gap: 2rem;
+}
+.crypto-news-box a {
+  text-decoration: none;
+  color: #fff;
+  border-radius: 65px;
+}
+.crypto-news-card:hover {
+  background-color: rgba(255, 255, 255, 0.162);  
+  transform: translateY(-10px);
+}
+.crypto-news-card {
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 60px;
+  padding: 2rem;
+  transform: translateY(0%);
+  transition: transform 0.1s ease-in-out;
+  background-color: rgba(255, 255, 255, .15);  
+}
+.crypto-news-card img{
+  height: 5.5rem;
+  width: 5.5rem;
+  border-radius: 10px;
+  position: relative;
+}
+.crypto-news-card h3{
+  font-size: 16px;
+}
+.crypto-news-card p {
+  font-size: 14px;
+}
+.crypto-news-card a {
+  text-decoration: none;
+  color: #fff;
+}
+.crypto-news-card a:hover {
+  color: var(--blue)
+}
+.news-card-heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  color: var(--gold)
+}
+.news-card-desc {
+  height: 100%;
+  margin-bottom: 3rem;
+}
+.news-card-src {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #fff;
+  padding-top: 0.5rem;
+}
+.src-name {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 6px;
+}
+.src-name img {
+  height: 1.5rem;
+  width: 1.5rem;
+  size: cover;
+  border-radius: 100%;
+}
+.news-page h1 {
+  color:rgb(239, 203, 44);
+  text-align: center;
+}
+@media screen and (max-width: 1200px) {
+  .crypto-news-box {
+    grid-template-columns: auto auto;
+  }
+}
+@media screen and (max-width: 800px) {
+  .crypto-news-box {
+    grid-template-columns: auto;
+  }
+  .news-card-desc {
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .crypto-news-card {
+    border-radius: 30px;
+    padding: 25px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .news-card-heading {
+    flex-direction: column-reverse;
+  }
+}

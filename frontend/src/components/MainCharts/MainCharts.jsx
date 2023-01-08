@@ -3,6 +3,7 @@ import SmallChart from "./SmallChart";
 import "./MainCharts.scss";
 import { Navigation, Pagination, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 
 import "swiper/swiper.min.css";
 import "swiper/css/navigation";
@@ -37,34 +38,40 @@ const MainCharts = () => {
           className="charts_slider"
         >
           <SwiperSlide>
-            <SmallChart
-              coin="eth"
-              coinId={ethId}
-              symbol={ethSymbol}
-              imgUrl={ethImgUrl}
-              text="Ethereum is the main altcoin! Watch it: ETH trends determines price changes in all other altcoins!"
-              className="main-chart-eth"
-            />
+            <Link to="/crypto/Qwsogvtv82FCd">
+              <SmallChart
+                coin="eth"
+                coinId={ethId}
+                symbol={ethSymbol}
+                imgUrl={ethImgUrl}
+                text="Ethereum is the main altcoin! Watch it: ETH trends determines price changes in all other altcoins!"
+                className="main-chart-eth"
+              />
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <SmallChart
-              coin="btc"
-              coinId={btcId}
-              symbol={btcSymbol}
-              imgUrl={btcImgUrl}
-              text="Bitcoin is the main crypto! Watch it closely: when BTC market share hits 60%, all the altcoins will hit their bottom!"
-              className="main-chart-btc"
-            />
+            <Link to="/crypto/Qwsogvtv82FCd">
+              <SmallChart
+                coin="btc"
+                coinId={btcId}
+                symbol={btcSymbol}
+                imgUrl={btcImgUrl}
+                text="Bitcoin is the main crypto! Watch it closely: when BTC market share hits 60%, all the altcoins will hit their bottom!"
+                className="main-chart-btc"
+              />
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <SmallChart
-              coin="teth"
-              coinId={tethId}
-              symbol={tethSymbol}
-              imgUrl={tethImgUrl}
-              text="Tehter is the main stablecoin. Those are pegged to $USD and are used for trading but be careful: they can suddenly depeg!"
-              className="main-chart-teth"
-            />
+            <Link to="/crypto/Qwsogvtv82FCd">
+              <SmallChart
+                coin="teth"
+                coinId={tethId}
+                symbol={tethSymbol}
+                imgUrl={tethImgUrl}
+                text="Tehter is the main stablecoin. Those are pegged to $USD and are used for trading but be careful: they can suddenly depeg!"
+                className="main-chart-teth"
+              />
+            </Link>
           </SwiperSlide>
         </Swiper>
       </div>

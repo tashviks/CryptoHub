@@ -19,11 +19,11 @@ const Hero = () => {
         <div className="hero-content-box">
           <div className="hero-content">
             <h1>Welcome to CryptoHub,</h1>
-            <p>
+            <div className="hero_subtitle">
               A resource for beginner crypto traders. Monitor current exchagne
               rates, check historic prices for fundamental analysis, read about
               exchanges and get fresh crypto news.
-            </p>
+            </div>
             <div className="hero-btns">
               <Link to="/currencies" className="btn-pink-solid">
                 Get started

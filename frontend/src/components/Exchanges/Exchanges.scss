@@ -15,6 +15,9 @@
   flex-direction: column;
   gap: 15px;
 }
+.exchanges_accord_wrapper {
+  gap: 20px;
+}
 .accord-box {
   width: 100%;
   flex-direction: column;
@@ -92,10 +95,6 @@
 .exchanges-box .search {
   padding: 0;
   margin-bottom: 3rem;
-}
-
-.exchanges_wrapper {
-  gap: 35px;
 }
 
 @media screen and (max-width: 480px) {

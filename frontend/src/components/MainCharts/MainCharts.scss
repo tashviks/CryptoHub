@@ -1,28 +1,30 @@
-.main-charts_section {
-  margin: 150px 0;
+.main-chart_wrap {
+  height: 100%;
+  padding: 7px;
+  border-radius: 107px;
+  background: linear-gradient(
+    143deg,
+    rgb(90, 0, 60) 0%,
+    rgba(255, 92, 230, 0.625) 70%
+  );
+  transform: translateY(0);
+  transition: transform 0.3s;
+  &.btc {
+    transform: translateY(0) scale(1.05);
+    &:hover {
+      transform: translateY(-5%) scale(1.05);
+    }
+  }
+  &:hover {
+    transform: translateY(-5%);
+    background: rgb(218, 0, 193);
+    box-shadow: 0px 0px 15px 3px rgba(195, 57, 174, 0.625);
+  }
 }
 .main-chart_card {
   border-radius: 100px;
   background-color: var(--bg);
   height: 100%;
-  z-index: 1;
-  position: static;
-  &::before {
-    content: "";
-    position: absolute;
-    width: 105%;
-    height: 105%;
-    border-radius: 110px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -10;
-    background: linear-gradient(
-      143deg,
-      rgb(40, 0, 35) 0%,
-      rgb(255, 46, 224) 70%
-    );
-  }
 }
 .main-chart {
   width: 100%;
@@ -87,11 +89,6 @@
     height: unset;
   }
 }
-@media screen and (max-width: 1300px) {
-  .main-chart_card {
-    width: 300px;
-  }
-}
 @media screen and (max-width: 1120px) {
   .main-charts_section {
     gap: 30px;
@@ -106,13 +103,5 @@
     align-items: center;
     justify-content: center;
     gap: 40px;
-  }
-  .main-chart_card {
-    min-height: fit-content;
-    width: 250px;
-    border-radius: 70px;
-  }
-  .main-chart_content {
-    height: 150px;
   }
 }

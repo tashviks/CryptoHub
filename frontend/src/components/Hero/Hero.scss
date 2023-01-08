@@ -94,8 +94,9 @@
     color: var(--gold);
   }
 }
-.hero-content p {
+.hero_subtitle {
   font-size: 18px;
+  line-height: 30px;
 }
 .hero-btns {
   display: flex;

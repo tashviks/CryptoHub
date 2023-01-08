@@ -46,7 +46,6 @@ const registerUser = asyncHandler(async (req, res) => {
 //@desc   Authorize user
 //@route  POST /api/users/login
 //@access Public
-
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -65,6 +64,18 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc   Track new coin
+//@route  PATCH /api/users
+//@access Private
+const trackCoin = asyncHandler(async (req, res) => {
+  const updatedUser = await User.findByIdAndUpdate(
+    req.body.userId,
+    { $push: { trackedCoins: { coinId: req.body.coinId } } },
+    { safe: true, upsert: true, new: true }
+  );
+  res.status(200).json(updatedUser);
+});
+
 //  Generate user JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -75,4 +86,5 @@ const generateToken = (id) => {
 module.exports = {
   registerUser,
   loginUser,
+  trackCoin,
 };

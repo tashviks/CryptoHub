@@ -28,33 +28,39 @@ const Exchanges = ({ simplified }) => {
     <section className="exchanges_section">
       <div className="container">
         <div className="exchanges_wrapper wrapper">
-          <div className="title">
-            <h4>Top 5 Exchanges</h4>
-            <Link to="/exchanges">More</Link>
-          </div>
-          {!simplified && (
-            <div className="wrapper hor">
-              <input
-                type="text"
-                placeholder="Search exchanges..."
-                className="search-bar"
-                value={searchTerm}
-                onChange={(e) =>
-                  setSearchTerm(e.target.value.toLocaleLowerCase())
-                }
-              />
-              <button
-                className="clear-btn"
-                onClick={() => {
-                  setSearchTerm("");
-                }}
-              >
-                <IoMdClose />
-              </button>
+          {simplified ? (
+            <div className="title">
+              <h4>Top 5 Exchanges</h4>
+              <Link to="/exchanges">More</Link>
             </div>
+          ) : null}
+          {!simplified && (
+            <section className="search-box">
+              <div className="container">
+                <div className="wrapper hor">
+                  <input
+                    type="text"
+                    placeholder="Search cryptos"
+                    className="search-bar"
+                    value={searchTerm}
+                    onChange={(e) =>
+                      setSearchTerm(e.target.value.toLocaleLowerCase())
+                    }
+                  />
+                  <button
+                    className="clear-btn"
+                    onClick={() => {
+                      setSearchTerm("");
+                    }}
+                  >
+                    <IoMdClose />
+                  </button>
+                </div>
+              </div>
+            </section>
           )}
           {exchanges && (
-            <div className="wrapper exchanges_wrapper">
+            <div className="wrapper exchanges_accord_wrapper">
               {exchanges?.slice(0, count).map((item, ind) => {
                 return (
                   <Accordion

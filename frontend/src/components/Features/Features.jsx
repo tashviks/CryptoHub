@@ -27,7 +27,7 @@ const Features = () => {
             </Link>
           </div>
           <div className="features-cards-box">
-            <div className="features-card">
+            <Link to="/news" className="features-card">
               <span>
                 <BulbOutlined
                   style={{ fontSize: "300%", color: "rgb(173, 2, 167)" }}
@@ -38,8 +38,8 @@ const Features = () => {
                 Check out the latest news of crypto market from experts and
                 reputable sources
               </p>
-            </div>
-            <div className="features-card">
+            </Link>
+            <Link to="/currencies" className="features-card">
               <span>
                 <MoneyCollectOutlined
                   style={{ fontSize: "300%", color: "rgb(173, 2, 167)" }}
@@ -47,8 +47,8 @@ const Features = () => {
               </span>
               <h3>Coins</h3>
               <p>Find out today's most prominent cryptocurrencies</p>
-            </div>
-            <div className="features-card">
+            </Link>
+            <Link to="/exchanges" className="features-card">
               <span>
                 <GlobalOutlined
                   style={{ fontSize: "300%", color: "rgb(173, 2, 167)" }}
@@ -59,8 +59,8 @@ const Features = () => {
                 Check out the exchange markets, their background and useful
                 links
               </p>
-            </div>
-            <div className="features-card">
+            </Link>
+            <Link to="/currencies" className="features-card">
               <span>
                 <FundOutlined
                   style={{ fontSize: "300%", color: "rgb(173, 2, 167)" }}
@@ -70,7 +70,7 @@ const Features = () => {
               <p>
                 Find out the price history of any coin with our custom charts
               </p>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ import {
   FundOutlined,
   MoneyCollectOutlined,
 } from "@ant-design/icons";
-import "./Globals.css";
+import "./Globals.scss";
 
 function Globals() {
   const { data, isFetching } = useGetGlobalsQuery();
@@ -28,24 +28,44 @@ function Globals() {
             </div>
             <div className="globals-content">
               <h3 className="globals-heading">
-                <PieChartOutlined /> <font id="btc">BTC</font> market share:{" "}
-                <font>{millify(data?.data?.btcDominance)}%</font>
+                <span>
+                  <PieChartOutlined /> <font id="btc">BTC</font> market share:{" "}
+                </span>
+                <span className="value-span">
+                  {millify(data?.data?.btcDominance)}%
+                </span>
               </h3>
               <h3 className="globals-heading">
-                <DollarOutlined /> Total coins:{" "}
-                <font>{millify(data?.data?.totalCoins)}</font>
+                <span>
+                  <DollarOutlined /> Total coins:{" "}
+                </span>
+                <span className="value-span">
+                  {millify(data?.data?.totalCoins)}
+                </span>
               </h3>
               <h3 className="globals-heading">
-                <FundOutlined /> Total markets:{" "}
-                <font>{millify(data?.data?.totalMarkets)}</font>
+                <span>
+                  <FundOutlined /> Total markets:{" "}
+                </span>
+                <span className="value-span">
+                  {millify(data?.data?.totalMarkets)}
+                </span>
               </h3>
               <h3 className="globals-heading">
-                <MoneyCollectOutlined /> Market cap:{" "}
-                <font>${millify(data?.data?.totalMarketCap)}</font>
+                <span>
+                  <MoneyCollectOutlined /> Market cap:{" "}
+                </span>
+                <span className="value-span">
+                  ${millify(data?.data?.totalMarketCap)}
+                </span>
               </h3>
               <h3 className="globals-heading">
-                <DollarOutlined /> Traded in 24h:{" "}
-                <font>${millify(data?.data?.total24hVolume)}</font>
+                <span>
+                  <DollarOutlined /> Traded in 24h:{" "}
+                </span>
+                <span className="value-span">
+                  ${millify(data?.data?.total24hVolume)}
+                </span>
               </h3>
             </div>
           </div>

@@ -27,13 +27,18 @@
   height: 18rem;
   padding: 3rem;
   border-radius: 30px;
-  background: rgb(31,14,28);
-  background: linear-gradient(325deg, rgba(31,14,28,1) 0%, rgb(40, 22, 37) 100%);
-  box-shadow: 0px 0px 40px 5px rgba(0,0,0,0.3);
+  background: rgb(31, 14, 28);
+  background: linear-gradient(
+    325deg,
+    rgba(31, 14, 28, 1) 0%,
+    rgb(40, 22, 37) 100%
+  );
+  box-shadow: 0px 0px 40px 5px rgba(0, 0, 0, 0.3);
   transform: translateY(0) rotate(0);
   transition: transform 0.1s ease-in-out;
 }
 .features-card:hover {
+  color: #fff;
   transform: translateY(-15px) rotate(-1deg);
 }
 .features-card:hover span {

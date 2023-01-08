@@ -4,7 +4,7 @@
   --txt: rgb(217, 217, 217);
   --txt-pink: rgb(173, 2, 167);
   --gold: rgb(239, 203, 44);
- }
+}
 
 /* GENERAL */
 
@@ -19,47 +19,46 @@ header {
   transition: 0.3s;
 }
 
- .header_nav {
+.header_nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
 
- }
-
- header.scrolled {
+header.scrolled {
   height: 60px;
   background-color: rgba(10, 6, 20, 0.589);
- }
+}
 
- header.scrolled .logo {
+header.scrolled .logo {
   font-size: 26px;
- }
+}
 
- header.scrolled .logo img {
+header.scrolled .logo img {
   width: 30px;
- }
+}
 
- header.scrolled .menu-icon .fas {
+header.scrolled .menu-icon .fas {
   width: 25px;
   height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
- }
+}
 
- .menu-icon .fas::before {
+.menu-icon .fas::before {
   transition: 0.3s;
- }
+}
 
- header.scrolled .menu-icon .fas::before {
+header.scrolled .menu-icon .fas::before {
   font-size: 25px;
- }
+}
 
- /* LOGO */
+/* LOGO */
 
 .logo {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   color: rgb(239, 203, 44);
   font-size: 2rem;
   display: flex;
@@ -86,18 +85,27 @@ header {
 }
 .nav_ul a {
   padding: 0.5rem 1.5rem;
-
 }
 .nav_ul a.active {
   border: none;
   border-radius: 15px;
   background: rgb(77, 17, 123);
-  background: linear-gradient(143deg, rgb(77, 17, 123) 0%, rgb(217, 0, 159) 100%);
+  background: linear-gradient(
+    143deg,
+    rgb(77, 17, 123) 0%,
+    rgb(217, 0, 159) 100%
+  );
   color: #fff;
 }
 .nav_ul a.active:hover {
   background: rgb(217, 0, 159);
-  box-shadow: 0px 0px 10px 10px rgba(201, 2, 214, 0.2)
+  box-shadow: 0px 0px 10px 10px rgba(201, 2, 214, 0.2);
+}
+
+.nav_link {
+  svg {
+    margin-right: 5px;
+  }
 }
 
 /* BURGER MENU */
@@ -146,7 +154,6 @@ header {
   box-shadow: -25px 0 20px 0px rgb(0 0 0 / 30%);
 }
 
-
 /************************* MEDIA QUERIES ************************/
 
 @media screen and (max-width: 768px) {
@@ -157,50 +164,6 @@ header {
     display: none;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* .header-nav {
   height: 75px;

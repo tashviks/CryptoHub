@@ -24,9 +24,10 @@
 .crypto-container {
   position: relative;
   border-radius: 80px;
+  transform: translateY(0);
+  transition: 0.1s;
 }
 .crypto-container:hover {
-  transition: transform 0.1s ease-in-out;
   transform: translateY(-5px);
 }
 .crypto-card {
@@ -39,8 +40,12 @@
 }
 .crypto-card-wrap {
   padding: 7px;
-  background: rgb(65,0,57);
-  background: linear-gradient(143deg, rgb(90, 0, 60) 0%, rgba(255, 92, 230, 0.625) 70%);
+  background: rgb(65, 0, 57);
+  background: linear-gradient(
+    143deg,
+    rgb(90, 0, 60) 0%,
+    rgba(255, 92, 230, 0.625) 70%
+  );
   border-radius: 85px;
   z-index: 0;
 }
@@ -74,7 +79,7 @@
   font-size: 25px;
   border: none;
   background: transparent;
-  color:rgb(200, 200, 200);
+  color: rgb(200, 200, 200);
   z-index: 1;
   cursor: pointer;
   display: flex;
@@ -86,7 +91,7 @@
 }
 .btn-follow {
   background: none;
-  border: none; 
+  border: none;
   position: absolute;
   z-index: 10;
   bottom: 2rem;
@@ -100,6 +105,13 @@
 }
 .neutr {
   color: #fff;
+}
+
+/* TRACK BUTTON */
+
+.track-btn {
+  color: rgb(200, 200, 200);
+  font-size: 40px;
 }
 
 /* Pagination */
@@ -129,7 +141,7 @@
   background: none;
   border: none;
   color: #fff;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   font-size: 16px;
   cursor: pointer;
 }
@@ -140,7 +152,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .page-item:hover .page-link {
   color: #030408;

@@ -48,29 +48,35 @@ const LoginPage = () => {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <section className="reg-section">
-      <h2>Login</h2>
+    <main className="reg_page">
+      <section className="reg_section">
+        <div className="container">
+          <div className="req_wrapper wrapper ver">
+            <h2>Login</h2>
 
-      <form onSubmit={handleSubmit} className="reg-form">
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          value={email}
-          onChange={handleChange}
-        />
+            <form onSubmit={handleSubmit} className="reg_form">
+              <input
+                type="email"
+                name="email"
+                placeholder="email"
+                value={email}
+                onChange={handleChange}
+              />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={password}
-          onChange={handleChange}
-        />
+              <input
+                type="password"
+                name="password"
+                placeholder="password"
+                value={password}
+                onChange={handleChange}
+              />
 
-        <button type="submit">Submit</button>
-      </form>
-    </section>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 };
 

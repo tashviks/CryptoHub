@@ -30,10 +30,36 @@ const login = async (userData) => {
 
 const logout = async () => [localStorage.removeItem("user")];
 
+// Track coin
+
+const trackCoin = async (coinData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.patch(API_URL + "track", coinData, config);
+  return response.data;
+};
+
+// Get tracked coins
+
+const getTrackedCoins = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL + "track", config);
+  return response.data;
+};
+
 const authService = {
   register,
   login,
   logout,
+  trackCoin,
+  getTrackedCoins,
 };
 
 export default authService;

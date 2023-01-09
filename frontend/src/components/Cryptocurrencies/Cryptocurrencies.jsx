@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import ReactPaginate from "react-paginate";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import CryptoCard from "./CryptoCard";
+import { getTrackedCoins, reset } from "../../features/auth/authSlice";
 
 import Loader from "../Loader/Loader";
 
@@ -10,7 +13,7 @@ import "./Cryptocurrencies.scss";
 
 import { useGetCryptosListQuery } from "../../services/cryptoApi";
 
-const Items = ({ currentItems }) => {
+const Items = ({ currentItems, trackedCoins }) => {
   return (
     <>
       {!currentItems ? (
@@ -31,6 +34,11 @@ const Items = ({ currentItems }) => {
               change={currency.change}
               id={currency.uuid}
               key={index}
+              isTracked={
+                trackedCoins.some((e) => e.coinId === currency.uuid)
+                  ? true
+                  : false
+              }
             />
           ))}
         </div>
@@ -40,6 +48,7 @@ const Items = ({ currentItems }) => {
 };
 
 const Cryptocurrencies = ({ simplified }) => {
+  const dispatch = useDispatch();
   const count = simplified ? 10 : 100;
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -48,6 +57,17 @@ const Cryptocurrencies = ({ simplified }) => {
 
   const [cryptos, setCryptos] = useState([]);
   const { data: cryptosList, isFetching } = useGetCryptosListQuery(count);
+
+  const { user, trackedCoins } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    dispatch(getTrackedCoins());
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch]);
+
+  console.log(trackedCoins);
 
   useEffect(() => {
     const filteredData = cryptosList?.data?.coins?.filter(
@@ -142,6 +162,7 @@ const Cryptocurrencies = ({ simplified }) => {
               currentItems={currentItems}
               count={count}
               searchTerm={searchTerm}
+              trackedCoins={trackedCoins}
             />
           </div>
         </div>

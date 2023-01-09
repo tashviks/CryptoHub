@@ -5,6 +5,8 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
+  trackedCoins: [],
+  boughtCoins: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -50,6 +52,49 @@ export const logout = createAsyncThunk("auth/logout", async () => {
   await authService.logout();
 });
 
+// Track coin
+
+export const trackCoin = createAsyncThunk(
+  "auth/track",
+  async (coinData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.trackCoin(
+        { userId: coinData.userId, coinId: coinData.coinId },
+        token
+      );
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Get tracked coins
+
+export const getTrackedCoins = createAsyncThunk(
+  "auth/getTracked",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.getTrackedCoins(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -93,6 +138,9 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
+      })
+      .addCase(getTrackedCoins.fulfilled, (state, action) => {
+        state.trackedCoins = action.payload;
       });
   },
 });

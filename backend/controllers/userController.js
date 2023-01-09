@@ -65,12 +65,39 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 //@desc   Track new coin
-//@route  PATCH /api/users
+//@route  PATCH /api/users/track
 //@access Private
 const trackCoin = asyncHandler(async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(
-    req.body.userId,
+    req.user.id,
     { $push: { trackedCoins: { coinId: req.body.coinId } } },
+    { safe: true, upsert: true, new: true }
+  );
+  res.status(200).json(updatedUser);
+});
+
+//@desc   Get tracked coins
+//@route  GET /api/users/track
+//@access Private
+const getTrackedCoins = asyncHandler(async (req, res) => {
+  const user = await User.findOne({ _id: req.user.id }).select("trackedCoins");
+  res.status(200).json(user.trackedCoins);
+});
+
+//@desc   Buy new coin
+//@route  PATCH /api/users/buy
+//@access Private
+const buyCoin = asyncHandler(async (req, res) => {
+  const updatedUser = await User.findByIdAndUpdate(
+    req.body.userId,
+    {
+      $push: {
+        boughtCoins: {
+          coinId: req.body.coinId,
+          priceBought: req.body.priceBought,
+        },
+      },
+    },
     { safe: true, upsert: true, new: true }
   );
   res.status(200).json(updatedUser);
@@ -87,4 +114,6 @@ module.exports = {
   registerUser,
   loginUser,
   trackCoin,
+  buyCoin,
+  getTrackedCoins,
 };

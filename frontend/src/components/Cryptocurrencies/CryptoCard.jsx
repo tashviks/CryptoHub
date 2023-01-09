@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import millify from "millify";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { trackCoin } from "../../features/auth/authSlice";
+import { deleteTrackedCoin, trackCoin } from "../../features/auth/authSlice";
 
 import { UpOutlined, DownOutlined, HeartFilled } from "@ant-design/icons";
 
@@ -32,7 +32,11 @@ const CryptoCard = ({
   }, [change]);
 
   const handleTrack = () => {
-    dispatch(trackCoin({ userId: user._id, coinId: uuid }));
+    dispatch(trackCoin({ coinId: uuid }));
+  };
+
+  const handleDeleteTracked = () => {
+    dispatch(deleteTrackedCoin({ coinId: uuid }));
   };
 
   return (
@@ -59,9 +63,15 @@ const CryptoCard = ({
           </div>
         </div>
       </Link>
-      <button className="track-btn" onClick={() => handleTrack()}>
-        {isTracked ? "tracked" : "not tracked"}
-      </button>
+      {isTracked ? (
+        <button className="track-btn" onClick={() => handleDeleteTracked()}>
+          tracked
+        </button>
+      ) : (
+        <button className="track-btn" onClick={() => handleTrack()}>
+          not tracked
+        </button>
+      )}
     </div>
   );
 };

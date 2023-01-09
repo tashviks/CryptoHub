@@ -42,6 +42,22 @@ const trackCoin = async (coinData, token) => {
   return response.data;
 };
 
+// Delete tracked coin
+
+const deleteTrackedCoin = async (coinData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.patch(
+    API_URL + "track/delete",
+    coinData,
+    config
+  );
+  return response.data;
+};
+
 // Get tracked coins
 
 const getTrackedCoins = async (token) => {
@@ -60,6 +76,7 @@ const authService = {
   logout,
   trackCoin,
   getTrackedCoins,
+  deleteTrackedCoin,
 };
 
 export default authService;

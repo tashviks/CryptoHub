@@ -59,8 +59,28 @@ export const trackCoin = createAsyncThunk(
   async (coinData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await authService.trackCoin(
-        { userId: coinData.userId, coinId: coinData.coinId },
+      return await authService.trackCoin({ coinId: coinData.coinId }, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Delete tracked coin
+
+export const deleteTrackedCoin = createAsyncThunk(
+  "auth/deleteTracked",
+  async (coinData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.deleteTrackedCoin(
+        { coinId: coinData.coinId },
         token
       );
     } catch (error) {

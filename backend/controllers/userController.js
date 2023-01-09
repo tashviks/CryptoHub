@@ -76,6 +76,16 @@ const trackCoin = asyncHandler(async (req, res) => {
   res.status(200).json(updatedUser);
 });
 
+//@desc   Delete tracked coin
+//@route  DELETE /api/users/track
+//@access Private
+const deleteTrackedCoin = asyncHandler(async (req, res) => {
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, {
+    $pull: { trackedCoins: { coinId: req.body.coinId } },
+  });
+  res.status(200).json(updatedUser);
+});
+
 //@desc   Get tracked coins
 //@route  GET /api/users/track
 //@access Private
@@ -84,21 +94,56 @@ const getTrackedCoins = asyncHandler(async (req, res) => {
   res.status(200).json(user.trackedCoins);
 });
 
+//@desc   Get bought coins
+//@route  GET /api/users/buy
+//@access Private
+const getBoughtCoins = asyncHandler(async (req, res) => {
+  const user = await User.findOne({ _id: req.user.id }).select("boughtCoins");
+  res.status(200).json(user.boughtCoins);
+});
+
 //@desc   Buy new coin
 //@route  PATCH /api/users/buy
 //@access Private
 const buyCoin = asyncHandler(async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(
-    req.body.userId,
+    req.user.id,
     {
       $push: {
         boughtCoins: {
           coinId: req.body.coinId,
           priceBought: req.body.priceBought,
+          amount: req.body.amount,
         },
       },
     },
-    { safe: true, upsert: true, new: true }
+    { upsert: true }
+  );
+  res.status(200).json(updatedUser);
+});
+
+//@desc   Delete bought coin
+//@route  PATCH /api/users/buy/delete
+//@access Private
+const deleteBoughtCoin = asyncHandler(async (req, res) => {
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, {
+    $pull: {
+      boughtCoins: {
+        coinId: req.body.coinId,
+      },
+    },
+  });
+  res.status(200).json(updatedUser);
+});
+
+//@desc   Change amount
+//@route  PATCH /api/users/buy/change
+//@access Private
+const changeBoughtCoin = asyncHandler(async (req, res) => {
+  const updatedUser = await User.findOneAndUpdate(
+    { _id: req.user.id, "boughtCoins.coinId": req.body.coinId },
+    { $inc: { "boughtCoins.$.amount": req.body.amount } },
+    { new: true }
   );
   res.status(200).json(updatedUser);
 });
@@ -116,4 +161,8 @@ module.exports = {
   trackCoin,
   buyCoin,
   getTrackedCoins,
+  getBoughtCoins,
+  deleteTrackedCoin,
+  deleteBoughtCoin,
+  changeBoughtCoin,
 };

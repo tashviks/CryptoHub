@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import ReactPaginate from "react-paginate";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -34,7 +33,7 @@ const Items = ({ currentItems, trackedCoins }) => {
               change={currency.change}
               id={currency.uuid}
               key={index}
-              isTracked={
+              tracked={
                 trackedCoins.some((e) => e.coinId === currency.uuid)
                   ? true
                   : false
@@ -58,7 +57,7 @@ const Cryptocurrencies = ({ simplified }) => {
   const [cryptos, setCryptos] = useState([]);
   const { data: cryptosList, isFetching } = useGetCryptosListQuery(count);
 
-  const { user, trackedCoins } = useSelector((state) => state.auth);
+  const { trackedCoins } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getTrackedCoins());
@@ -66,8 +65,6 @@ const Cryptocurrencies = ({ simplified }) => {
       dispatch(reset());
     };
   }, [dispatch]);
-
-  console.log(trackedCoins);
 
   useEffect(() => {
     const filteredData = cryptosList?.data?.coins?.filter(
@@ -130,11 +127,6 @@ const Cryptocurrencies = ({ simplified }) => {
       <section>
         <div className="container">
           <div className="wrapper">
-            <div className="title">
-              <h4>Top 10 Cryptos</h4>
-              <Link to="/currencies">More</Link>
-            </div>
-
             {!simplified ? (
               <ReactPaginate
                 nextLabel=">"
@@ -156,7 +148,12 @@ const Cryptocurrencies = ({ simplified }) => {
                 activeClassName="active"
                 renderOnZeroPageCount={null}
               />
-            ) : null}
+            ) : (
+              <div className="title">
+                <h4>Top 10 Cryptos</h4>
+                <Link to="/currencies">More</Link>
+              </div>
+            )}
 
             <Items
               currentItems={currentItems}

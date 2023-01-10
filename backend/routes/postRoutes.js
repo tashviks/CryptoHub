@@ -18,7 +18,7 @@ router
   .get(protect, getPosts)
   .patch(protect, editPost)
   .delete(protect, deletePost);
-router.route("/posts/coin").get(protect, getPostsByCoin);
+router.route("/coin").get(protect, getPostsByCoin);
 router.route("/votes").patch(protect, upvotePost);
 router.route("/comments").patch(protect, commentPost);
 router.route("/comments/remove").patch(protect, removeComment);

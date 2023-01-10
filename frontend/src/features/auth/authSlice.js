@@ -159,6 +159,18 @@ export const authSlice = createSlice({
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
       })
+      .addCase(trackCoin.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.trackedCoins.push(action.payload);
+      })
+      .addCase(deleteTrackedCoin.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.trackedCoins = state.trackedCoins.filter(
+          (coin) => coin.coinId !== action.payload.coinId
+        );
+      })
       .addCase(getTrackedCoins.fulfilled, (state, action) => {
         state.trackedCoins = action.payload;
       });

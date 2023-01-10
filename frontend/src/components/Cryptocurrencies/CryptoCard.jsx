@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import millify from "millify";
-import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTrackedCoin, trackCoin } from "../../features/auth/authSlice";
+import {
+  deleteTrackedCoin,
+  trackCoin,
+  getTrackedCoins,
+  reset,
+} from "../../features/auth/authSlice";
 
 import { UpOutlined, DownOutlined, HeartFilled } from "@ant-design/icons";
 
@@ -16,13 +20,9 @@ const CryptoCard = ({
   price,
   marketCap,
   change,
-  isTracked,
+  tracked,
 }) => {
-  console.log(isTracked);
   const dispatch = useDispatch();
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
   const [changeClass, setChangeClass] = useState("");
 
   useEffect(() => {
@@ -31,47 +31,70 @@ const CryptoCard = ({
     else if (parseFloat(change) === 0) setChangeClass("neutr");
   }, [change]);
 
+  useEffect(() => {
+    dispatch(getTrackedCoins());
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch]);
+
+  const { trackedCoins } = useSelector((state) => state.auth);
+
   const handleTrack = () => {
     dispatch(trackCoin({ coinId: uuid }));
+    setIsTracked(true);
   };
 
   const handleDeleteTracked = () => {
     dispatch(deleteTrackedCoin({ coinId: uuid }));
+    setIsTracked(false);
   };
 
+  const [isTracked, setIsTracked] = useState(tracked);
+  const [press, setPress] = useState(false);
+
   return (
-    <div className="crypto-container">
-      <Link to={`/crypto/${uuid}`} key={uuid}>
-        <div className="crypto-card-wrap">
-          <div className="crypto-card">
-            <div className="crypto-card-heading">
-              <h3>
-                {rank}. <font>{name}</font>
-              </h3>
-              <img src={iconUrl} alt="coin icon" />
+    <div className="crypto-box">
+      <div
+        className={`crypto-container ${press ? "press" : ""}`}
+        onClick={() => setPress(true)}
+        onTransitionEnd={() => setPress(false)}
+      >
+        <Link to={`/crypto/${uuid}`} key={uuid} className="crypto-link">
+          <div className="crypto-card-wrap">
+            <div className="crypto-card">
+              <div className="crypto-card-heading">
+                <h3>
+                  {rank}. <font>{name}</font>
+                </h3>
+                <img src={iconUrl} alt="coin icon" />
+              </div>
+              <p>{symbol}</p>
+              <p>Price: ${millify(price, { precision: 3 })}</p>
+              <p>Market Cap: {millify(marketCap)}</p>
+              <p>
+                24h:{" "}
+                <font className={changeClass}>
+                  {parseFloat(change)}%
+                  {parseFloat(change) > 0 ? <UpOutlined /> : <DownOutlined />}{" "}
+                </font>
+              </p>
             </div>
-            <p>{symbol}</p>
-            <p>Price: ${millify(price, { precision: 3 })}</p>
-            <p>Market Cap: {millify(marketCap)}</p>
-            <p>
-              Daily Change:{" "}
-              <font className={changeClass}>
-                {parseFloat(change)}%
-                {parseFloat(change) > 0 ? <UpOutlined /> : <DownOutlined />}{" "}
-              </font>
-            </p>
           </div>
-        </div>
-      </Link>
-      {isTracked ? (
-        <button className="track-btn" onClick={() => handleDeleteTracked()}>
-          tracked
-        </button>
-      ) : (
-        <button className="track-btn" onClick={() => handleTrack()}>
-          not tracked
-        </button>
-      )}
+        </Link>
+        {isTracked ? (
+          <button
+            className="track-btn active"
+            onClick={() => handleDeleteTracked()}
+          >
+            <HeartFilled />
+          </button>
+        ) : (
+          <button className="track-btn" onClick={() => handleTrack()}>
+            <HeartFilled />
+          </button>
+        )}
+      </div>
     </div>
   );
 };

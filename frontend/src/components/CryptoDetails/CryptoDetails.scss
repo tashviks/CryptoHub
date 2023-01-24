@@ -7,14 +7,24 @@
   --txt-pink: rgb(173, 2, 167);
   --gold: rgb(239, 203, 44);
 }
-.details-page {
-  padding: 2rem 5% 5rem;
-}
 .details-heading {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+}
+.details_title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 7px;
+  margin-bottom: 10px;
+}
+.details_icon {
+  width: 30px;
+  height: 30px;
 }
 .details-heading h1 {
   display: flex;
@@ -24,34 +34,45 @@
   color: gold;
 }
 .icon {
-  width: 3.5rem;
-  margin-right: 1.5rem;
+  width: 30px;
+  height: 30px;
 }
-.coin-stats {
+.coin-stats_row {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
-  border-bottom: 1px solid #fff;
+  column-gap: 25px;
+  padding: 5px 15px;
+  border-radius: 15px;
+  background-color: rgb(52, 33, 42);
 }
-.details-stats, .other-stats {
+.details-stats {
+  width: 100%;
+}
+.details-stats,
+.other-stats {
   display: flex;
   flex-direction: column;
-  width: fit-content;
   gap: 1rem;
 }
 .coin-stats-name {
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 5px;
 }
-.coin-stats h2 {
+.coin-stats_row h2 {
   color: var(--gold);
 }
 .details-desc {
   display: flex;
   justify-content: space-between;
   gap: 5rem;
+}
+.details_wrapper.wrapper.hor {
+  column-gap: 100px;
+  align-items: unset;
 }
 .coin-links {
   width: fit-content;
@@ -61,39 +82,42 @@
 }
 .coin-links h2 {
   margin-bottom: 1rem;
-  color:rgb(239, 203, 44);
+  color: rgb(239, 203, 44);
 }
 .coin-link {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
   border-bottom: 1px solid #fff;
+  a {
+    text-align: right;
+  }
 }
 .coin-link {
   text-transform: capitalize;
   padding-bottom: 0.5rem;
 }
 .coin-link a {
-  color:rgb(239, 203, 44);
+  color: rgb(239, 203, 44);
 }
 .coin-link a:hover {
   color: var(--txt-pink);
 }
 .stats-box {
+  width: 100%;
   display: flex;
   justify-content: center;
   gap: 8rem;
-  margin: 5rem 0;
 }
-.coin-desc h3{
+.coin-desc h3 {
   margin: 1rem 0;
-  color:rgb(239, 203, 44);
+  color: rgb(239, 203, 44);
 }
 .desc h2 {
   margin: 0 0 1rem;
   display: flex;
   align-items: center;
-  color:rgb(239, 203, 44);
+  color: rgb(239, 203, 44);
 }
 .desc .icon {
   width: 2rem;
@@ -107,7 +131,7 @@
 }
 .btn-ex {
   margin-top: 0.5rem;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   font-size: 18px;
   padding: 0.2rem 0.4rem;
   border-radius: 10px;
@@ -118,19 +142,14 @@
   background-color: rgba(255, 191, 0, 0.7);
   color: rgba(255, 191, 0, 0.9);
 }
-.details-heading {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 0;
-}
 #time {
-  font-family: 'Titillium Web', sans-serif;
-  border-radius: 10px;
-  padding: 0 0.2rem;
-  border: none;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 18px;
 }
-#time option{
-  font-family: 'Titillium Web', sans-serif;
+#time option {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 14px;
+
   border-radius: 10px;
   padding: 0 0.2rem;
   border: none;
@@ -141,8 +160,38 @@
   gap: 1rem;
   width: fit-content;
 }
-.details-chart-box {
+.chart_details-heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.dark_card {
+  background: rgb(31, 14, 28);
+  background: linear-gradient(325deg, rgb(31, 14, 28) 0%, rgb(40, 22, 37) 100%);
+  box-shadow: 0px 0px 40px 5px rgb(0 0 0 / 30%);
+  padding: 60px 40px;
+  border-radius: 70px;
+}
+.chart_wrapper.wrapper.hor {
+  column-gap: 25px;
+  align-items: unset;
+}
+.chart_box {
+  width: 60%;
+}
+.chart_details-box {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   position: relative;
+}
+.chart_top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 15px;
 }
 @media screen and (max-width: 670px) {
   .stats-box {

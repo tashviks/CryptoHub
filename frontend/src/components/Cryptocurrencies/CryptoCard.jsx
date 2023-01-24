@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import millify from "millify";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   deleteTrackedCoin,
   trackCoin,
@@ -37,8 +37,6 @@ const CryptoCard = ({
       dispatch(reset());
     };
   }, [dispatch]);
-
-  const { trackedCoins } = useSelector((state) => state.auth);
 
   const handleTrack = () => {
     dispatch(trackCoin({ coinId: uuid }));

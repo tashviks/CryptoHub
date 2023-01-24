@@ -6,7 +6,7 @@ import Loader from "../Loader/Loader";
 
 import { useGetCryptoNewsQuery } from "../../services/cryptoNewsApi";
 
-import "./News.css";
+import "./News.scss";
 
 const News = ({ simplified }) => {
   const count = simplified ? 6 : 12;
@@ -21,14 +21,16 @@ const News = ({ simplified }) => {
     <section className="news_section">
       <div className="container">
         <div className="news_wrapper wrapper ver">
-          <div className="title">
-            <h4>Freshest News</h4>
-            <Link to="/news">More</Link>
-          </div>
-          {!simplified && <h1>Freshest Crypto News</h1>}
+          {simplified && (
+            <div className="title">
+              <h4>Freshest News</h4>
+              <Link to="/news">More</Link>
+            </div>
+          )}
+
           <div className="crypto-news-box">
             {cryptoNews.value.map((news, i) => (
-              <a href={news.url}>
+              <a href={news.url} key={i}>
                 <div className="crypto-news-card" key={i}>
                   <div className="news-card-heading">
                     <h3>{news?.name}</h3>

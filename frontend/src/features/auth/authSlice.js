@@ -5,6 +5,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
+  isTracked: false,
   trackedCoins: [],
   boughtCoins: [],
   isError: false,
@@ -115,6 +116,26 @@ export const getTrackedCoins = createAsyncThunk(
   }
 );
 
+// Check tracked coin
+
+export const checkTrackedCoin = createAsyncThunk(
+  "auth/checkTracked",
+  async (coinId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.checkTrackedCoin(coinId, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -173,6 +194,9 @@ export const authSlice = createSlice({
       })
       .addCase(getTrackedCoins.fulfilled, (state, action) => {
         state.trackedCoins = action.payload;
+      })
+      .addCase(checkTrackedCoin.fulfilled, (state, action) => {
+        state.isTracked = action.payload;
       });
   },
 });

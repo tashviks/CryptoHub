@@ -1,12 +1,12 @@
-import React from 'react'
-import CryptoDetails from '../components/CryptoDetails/CryptoDetails'
+import React from "react";
+import CryptoDetails from "../components/CryptoDetails/CryptoDetails";
 
 const CryptoDetailsPage = () => {
   return (
-    <div className="cryptodetails-page page">
+    <main className="cryptodetails-page page">
       <CryptoDetails />
-    </div>
-  )
-}
+    </main>
+  );
+};
 
-export default CryptoDetailsPage
+export default CryptoDetailsPage;

@@ -76,6 +76,20 @@ const trackCoin = asyncHandler(async (req, res) => {
   res.status(200).json(updatedUser);
 });
 
+//@desc   Check if coin is tracked by user
+//@route  GET /api/users/track/get/:id
+//@access Private
+const checkTrackedCoin = asyncHandler(async (req, res) => {
+  const trackedCoin = await User.findOne({
+    _id: req.user.id,
+  }).select({
+    trackedCoins: { $elemMatch: { coinId: req.params.id } },
+  });
+  if (trackedCoin && trackedCoin?.trackedCoins?.length > 0)
+    res.status(200).json(true);
+  else res.status(200).json(false);
+});
+
 //@desc   Delete tracked coin
 //@route  DELETE /api/users/track
 //@access Private
@@ -165,4 +179,5 @@ module.exports = {
   deleteTrackedCoin,
   deleteBoughtCoin,
   changeBoughtCoin,
+  checkTrackedCoin,
 };

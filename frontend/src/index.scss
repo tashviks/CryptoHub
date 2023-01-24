@@ -61,11 +61,6 @@ a {
   color: rgb(224, 224, 224);
 }
 
-// a:hover {
-//   color: rgb(217, 0, 159);
-// }
-
-/**sdfsdfsdf**/
 .App {
   overflow-x: hidden;
   width: 100%;
@@ -126,6 +121,21 @@ a {
 
 .title a:hover {
   color: #ad02a7;
+}
+
+/* SELECT */
+
+select {
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  option {
+    color: var(--bg-dark);
+  }
+  &:focus {
+    outline: none;
+  }
 }
 
 /* SEARCH BOX */

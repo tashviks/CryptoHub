@@ -70,6 +70,18 @@ const getTrackedCoins = async (token) => {
   return response.data;
 };
 
+// Check tracked coin
+
+const checkTrackedCoin = async (coinId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL + "track/get/" + coinId, config);
+  return response.data;
+};
+
 const authService = {
   register,
   login,
@@ -77,6 +89,7 @@ const authService = {
   trackCoin,
   getTrackedCoins,
   deleteTrackedCoin,
+  checkTrackedCoin,
 };
 
 export default authService;

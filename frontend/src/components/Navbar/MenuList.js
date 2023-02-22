@@ -26,4 +26,9 @@ export const MenuList = [
     url: "/news",
     icon: <BulbOutlined />,
   },
+  {
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: <BulbOutlined />,
+  },
 ];

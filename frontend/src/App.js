@@ -11,6 +11,7 @@ import NewsPage from "./pages/NewsPage.jsx";
 import CryptoDetailsPage from "./pages/CryptoDetailsPage.jsx";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/crypto/:coinId" element={<CryptoDetailsPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
         </Routes>
         <Footer />
       </Router>

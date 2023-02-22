@@ -33,6 +33,9 @@ const userSchema = mongoose.Schema(
         amount: {
           type: Number,
         },
+        value: {
+          type: Number,
+        },
       },
     ],
   },

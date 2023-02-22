@@ -48,7 +48,10 @@ const CryptoCard = ({
     setIsTracked(false);
   };
 
-  const [isTracked, setIsTracked] = useState(tracked);
+  const [isTracked, setIsTracked] = useState();
+  useEffect(() => {
+    setIsTracked(tracked);
+  }, [tracked]);
   const [press, setPress] = useState(false);
 
   return (

@@ -28,7 +28,7 @@ const News = ({ simplified }) => {
             </div>
           )}
 
-          <div className="crypto-news-box">
+          {/* <div className="crypto-news-box">
             {cryptoNews.value.map((news, i) => (
               <a href={news.url} key={i}>
                 <div className="crypto-news-card" key={i}>
@@ -61,7 +61,7 @@ const News = ({ simplified }) => {
                 </div>
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

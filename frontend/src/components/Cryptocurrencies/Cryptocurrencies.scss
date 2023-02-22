@@ -188,6 +188,20 @@
   align-items: center;
 }
 
+/* Crypto Row */
+
+.crypto_row-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.coin_img {
+  width: 20px;
+  height: 20px;
+}
+
 /************ Media Queries ************/
 
 @media screen and (max-width: 1200px) {

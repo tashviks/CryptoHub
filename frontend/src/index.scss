@@ -66,6 +66,9 @@ a {
   width: 100%;
   min-height: 100vh;
   color: rgb(224, 224, 224);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .container {
@@ -419,6 +422,30 @@ button {
   align-items: center;
   justify-content: center;
   row-gap: 20px;
+}
+
+/* Dashboard Page */
+
+.watchlist_tab {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 35px;
+  column-gap: 35px;
+}
+
+.tabs_section {
+  margin-bottom: 20px;
+}
+
+.tab_btn.active {
+  color: var(--gold);
+}
+
+.prof_name {
+  color: rgb(239, 203, 44);
+}
+
+.enable-btn {
 }
 
 /************************************ MEDIA QUERIES ***************************************/

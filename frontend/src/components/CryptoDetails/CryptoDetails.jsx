@@ -199,7 +199,7 @@ const CryptoDetails = () => {
               </div>
               <div className="enable_btns-box">
                 <button
-                  className="enable-btn"
+                  className="enable-btn btn-pink-solid"
                   onClick={() => setBuying(!buying)}
                 >
                   Purchase
@@ -211,6 +211,7 @@ const CryptoDetails = () => {
                     type="number"
                     name="amount"
                     value={buyAmount}
+                    className="enable-input"
                     onChange={(e) => setBuyAmount(e.target.value)}
                   />
                   <button className="buy-btn" onClick={() => handleBuy()}>

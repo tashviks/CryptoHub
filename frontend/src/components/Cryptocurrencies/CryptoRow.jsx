@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteBoughtCoin, reset } from "../../features/auth/authSlice";
 import Visualizer from "../Visualizer/Visualizer";
+import { DeleteOutlined } from "@ant-design/icons";
 
 const CryptoRow = ({
   coinId,
@@ -24,16 +25,22 @@ const CryptoRow = ({
     <>
       {isBought ? (
         <div className="crypto_row-box">
-          <p>{rank}</p>
-          <img src={icon} alt="coin icon" className="coin_img" />
-          <p>{name}</p>
-          <Visualizer change={change} />
-          <p>{priceBought}</p>
-          <p>{currPrice}</p>
-          <p>{amount}</p>
-          <p>{value}</p>
+          <div className="row_name">
+            {rank}. <img src={icon} alt="coin icon" className="coin_img" />
+            {name}
+          </div>
+          <div>
+            <Visualizer
+              change={((currPrice - priceBought) * 100) / priceBought}
+            />
+          </div>
+          <div>{priceBought.toFixed(2)}</div>
+          <div>{currPrice.toFixed(2)}</div>
+          <div>{amount}</div>
+          <div>{value.toFixed(2)}</div>
+          <div>{(amount * currPrice).toFixed(2)}</div>
           <button className="delete-btn" onClick={() => handleDeleteBought()}>
-            X
+            <DeleteOutlined />
           </button>
         </div>
       ) : null}

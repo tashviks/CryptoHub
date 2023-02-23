@@ -14,8 +14,8 @@ const DashPieChart = ({ heldCoins, invested }) => {
 
   useEffect(() => {
     if (heldCoins)
-      setSharesdata(heldCoins.map((coin) => (coin.sum * 100) / invested));
-    if (heldCoins) setLabelsData(heldCoins.map((coin) => coin.symbol));
+      setSharesdata(heldCoins.map((coin) => (coin.value * 100) / invested));
+    if (heldCoins) setLabelsData(heldCoins.map((coin) => coin.name));
   }, [heldCoins, invested]);
 
   let displayedShares;

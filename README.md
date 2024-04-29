@@ -1,4 +1,4 @@
-# CryptoHu₿ | MERN | Stanislav Tiryoshin
+# CryptoHu₿ | MERN | 
 
 Full-stack application for beginner cryptotraders.
 
@@ -14,8 +14,5 @@ Full-stack application for beginner cryptotraders.
 
 ## About
 
-This is a practice project started for my University's "Advanced NoSQL Databases" course.
+This is a practice project started for my University's "React" course.
 
-## Credentials
-
-Copyright ©️ 2022 [Stanislav Tiryoshin](https://github.com/stanislavtiryoshin)

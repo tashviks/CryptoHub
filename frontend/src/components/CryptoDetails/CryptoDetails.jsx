@@ -52,6 +52,7 @@ const CryptoDetails = () => {
 
   const handleTrack = () => {
     dispatch(trackCoin({ coinId: coinId }));
+    console.log(coinId);
     setTracked(true);
   };
 

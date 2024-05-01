@@ -128,6 +128,7 @@ const buyCoin = asyncHandler(async (req, res) => {
           coinId: req.body.coinId,
           priceBought: req.body.priceBought,
           amount: req.body.amount,
+          value: req.body.amount * req.body.priceBought,
         },
       },
     },

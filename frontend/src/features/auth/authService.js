@@ -42,6 +42,18 @@ const trackCoin = async (coinData, token) => {
   return response.data;
 };
 
+// Buy coin
+
+const buyCoin = async (coinData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.patch(API_URL + "buy", coinData, config);
+  return response.data;
+};
+
 // Delete tracked coin
 
 const deleteTrackedCoin = async (coinData, token) => {
@@ -82,14 +94,41 @@ const checkTrackedCoin = async (coinId, token) => {
   return response.data;
 };
 
+// Get tracked coins
+
+const getBoughtCoins = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL + "buy", config);
+  return response.data;
+};
+
+// Delete bought coin
+
+const deleteBoughtCoin = async (coinData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.patch(API_URL + "buy/delete", coinData, config);
+  return response.data;
+};
+
 const authService = {
   register,
   login,
   logout,
   trackCoin,
   getTrackedCoins,
+  getBoughtCoins,
+  deleteBoughtCoin,
   deleteTrackedCoin,
   checkTrackedCoin,
+  buyCoin,
 };
 
 export default authService;

@@ -73,6 +73,33 @@ export const trackCoin = createAsyncThunk(
   }
 );
 
+// Buy coin
+
+export const buyCoin = createAsyncThunk(
+  "auth/buy",
+  async (coinData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.buyCoin(
+        {
+          coinId: coinData.coinId,
+          priceBought: coinData.priceBought,
+          amount: coinData.amount,
+        },
+        token
+      );
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Delete tracked coin
 
 export const deleteTrackedCoin = createAsyncThunk(
@@ -116,6 +143,26 @@ export const getTrackedCoins = createAsyncThunk(
   }
 );
 
+// Get bought coins
+
+export const getBoughtCoins = createAsyncThunk(
+  "auth/getBought",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.getBoughtCoins(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Check tracked coin
 
 export const checkTrackedCoin = createAsyncThunk(
@@ -124,6 +171,29 @@ export const checkTrackedCoin = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await authService.checkTrackedCoin(coinId, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Delete bought coin
+
+export const deleteBoughtCoin = createAsyncThunk(
+  "auth/deleteBought",
+  async (coinData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.deleteBoughtCoin(
+        { coinId: coinData.coinId },
+        token
+      );
     } catch (error) {
       const message =
         (error.response &&
@@ -197,7 +267,15 @@ export const authSlice = createSlice({
       })
       .addCase(checkTrackedCoin.fulfilled, (state, action) => {
         state.isTracked = action.payload;
-      });
+      })
+      .addCase(getBoughtCoins.fulfilled, (state, action) => {
+        state.boughtCoins = action.payload;
+      })
+      .addCase(deleteBoughtCoin.fulfilled, (state, action) => [
+        (state.boughtCoins = state.boughtCoins.filter(
+          (coin) => coin.coinId !== action.payload.coinId
+        )),
+      ]);
   },
 });
 

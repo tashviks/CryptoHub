@@ -17,7 +17,7 @@ const Visualizer = ({ change }) => {
       <span className="float">
         {parseFloat(change) > 0 ? <UpOutlined /> : <DownOutlined />}{" "}
       </span>
-      {parseFloat(change)}%
+      {parseFloat(change).toFixed(2)}%
     </font>
   );
 };

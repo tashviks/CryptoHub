@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../features/auth/authSlice";
+import styled from "styled-components";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -48,6 +49,7 @@ const LoginPage = () => {
   if (isLoading) return <p>Loading...</p>;
 
   return (
+    <Loginn>
     <main className="reg_page">
       <section className="reg_section">
         <div className="container">
@@ -77,7 +79,50 @@ const LoginPage = () => {
         </div>
       </section>
     </main>
+    </Loginn>
   );
 };
+
+const Loginn = styled.div`
+
+
+.reg-page{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reg_section {
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reg_form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reg_form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.reg_form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reg_form button:hover {
+  background-color: #0056b3;
+}
+`;
 
 export default LoginPage;

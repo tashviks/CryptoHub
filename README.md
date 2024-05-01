@@ -1,4 +1,4 @@
-# CryptoHu₿ | MERN | Stanislav Tiryoshin
+# CryptoHu₿ | MERN | 
 
 Full-stack application for beginner cryptotraders.
 
@@ -7,15 +7,12 @@ Full-stack application for beginner cryptotraders.
 <img src="https://user-images.githubusercontent.com/69424907/176843480-502654d1-8041-4ff7-a8aa-c51eb13bcca7.png" width="150">
 
 - MongoDB, Mongoose
-- Express
-- React + Redux Toolkit
+- Express, Node js
+- React, Redux Toolkit
 - JSON web token
 - ChartJS
 
 ## About
 
-This is a practice project started for my University's "Advanced NoSQL Databases" course.
+This is a practice project started for my University's "React" course.
 
-## Credentials
-
-Copyright ©️ 2022 [Stanislav Tiryoshin](https://github.com/stanislavtiryoshin)

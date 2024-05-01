@@ -31,6 +31,7 @@ import {
   reset,
   deleteTrackedCoin,
   trackCoin,
+  buyCoin,
 } from "../../features/auth/authSlice";
 
 const CryptoDetails = () => {
@@ -51,6 +52,7 @@ const CryptoDetails = () => {
 
   const handleTrack = () => {
     dispatch(trackCoin({ coinId: coinId }));
+    console.log(coinId);
     setTracked(true);
   };
 
@@ -66,6 +68,19 @@ const CryptoDetails = () => {
     timeperiod,
   });
   const cryptoDetails = data?.data?.coin;
+
+  const [buying, setBuying] = useState(false);
+  const [buyAmount, setBuyAmount] = useState(0);
+
+  const handleBuy = () => {
+    dispatch(
+      buyCoin({
+        coinId: coinId,
+        priceBought: cryptoDetails?.price,
+        amount: buyAmount,
+      })
+    );
+  };
 
   if (isFetching) return <Loader />;
 
@@ -183,6 +198,28 @@ const CryptoDetails = () => {
                   );
                 })}
               </div>
+              <div className="enable_btns-box">
+                <button
+                  className="enable-btn btn-pink-solid"
+                  onClick={() => setBuying(!buying)}
+                >
+                  Purchase
+                </button>
+              </div>
+              {buying && (
+                <div className="buy_btns-box">
+                  <input
+                    type="number"
+                    name="amount"
+                    value={buyAmount}
+                    className="enable-input"
+                    onChange={(e) => setBuyAmount(e.target.value)}
+                  />
+                  <button className="buy-btn" onClick={() => handleBuy()}>
+                    Buy
+                  </button>
+                </div>
+              )}
             </div>
             <div className="chart_box dark_card">
               <div className="chart_top">
@@ -213,7 +250,7 @@ const CryptoDetails = () => {
         </div>
       </section>
 
-      <section className="stats_section">
+      {/* <section className="stats_section">
         <div className="container">
           <div className="stats-box">
             <div className="details-stats">
@@ -253,7 +290,7 @@ const CryptoDetails = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="details-desc">
         <div className="container">

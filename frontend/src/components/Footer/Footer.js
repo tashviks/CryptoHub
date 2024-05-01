@@ -24,12 +24,12 @@ const Footer = () => {
           })}
         </ul>
         <ul>
-          <li><a href='https://www.linkedin.com/in/stanislav-tiryoshin/'><LinkedinOutlined /> LinkedIn</a></li>
-          <li><a href="https://github.com/stanislavtiryoshin"><GithubOutlined/> Github</a></li>
+          <li><a href='https://www.linkedin.com/in/tashvik'><LinkedinOutlined /> LinkedIn</a></li>
+          <li><a href="https://github.com/tashviks"><GithubOutlined/> Github</a></li>
         </ul>
       </nav>
       <div className='credentials'>
-        Coded by <a href="https://www.linkedin.com/in/stanislav-tiryoshin/">Stanislav Tiryoshin</a> ⓒ 2022
+        Coded by <a href="https://www.linkedin.com/in/tashvik/">Tashvik Srivastava</a> ⓒ 2024
       </div>
     </footer>
   )
